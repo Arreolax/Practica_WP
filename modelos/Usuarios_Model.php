@@ -22,17 +22,18 @@ class UsuariosModel {
     }
 
     public function update($data) {
-        $stmt = $this -> conn -> prepare("UPDATE usuarios (nombre, correo, contrasena, telefono, direccion) WHERE id_usuario=?");
+        $stmt = $this -> conn -> prepare("UPDATE usuarios SET nombre=?, correo=?, contrasena=?, telefono=?, direccion=? WHERE id_usuario=?");
         $stmt -> bind_param("sssssi", $data['nombre'], $data['correo'], $data['contrasena'], $data['telefono'], $data['direccion'], $data['id_usuario']);
         //Parametrizar los datos s->string i->entero
         return $stmt -> execute();
     }
 
     public function delete($id) {
-        $stmt = $this -> conn -> prepare(" DELETE FROM usuarios WHERE id_usuario=?");
+        $stmt = $this -> conn -> prepare("DELETE FROM usuarios WHERE id_usuario=?");
         $stmt -> bind_param("i", $id);
-        //Parametrizar los datos i->entero b-
-        return $stmt -> execute();
+        //Parametrizar los datos i->entero
+        $stmt -> execute();
+        
 
     }
 }

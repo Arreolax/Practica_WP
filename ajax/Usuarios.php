@@ -1,7 +1,7 @@
 <?php
-require_once "../modelos/Usuarios_Model.php";
+require_once '../modelos/Usuarios_Model.php';
  
-header('Content-Type: applicaction/json');
+header('Content-Type: application/json');
 $usuario = new UsuariosModel();         //Se llama la funcion del modelo
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -22,7 +22,7 @@ switch ($method) {
 
     case 'DELETE':
         parse_str(file_get_contents("php://input"), $data);
-        echo json_encode(['sucess' => $usuario -> delete($data['id'])]);
+        echo json_encode(['sucess' => $usuario -> delete($data)]);
     break;
 
     default:
