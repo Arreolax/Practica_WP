@@ -32,9 +32,7 @@ class UsuariosModel {
         $stmt = $this -> conn -> prepare("DELETE FROM usuarios WHERE id_usuario=?");
         $stmt -> bind_param("i", $id);
         //Parametrizar los datos i->entero
-        $stmt -> execute();
-        
-
+        return $stmt -> execute();
     }
 }
 ?>
