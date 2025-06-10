@@ -1,8 +1,13 @@
 <?php
-require_once "conexion.php";
+require_once "../config/conexion.php";
 
 class CategoriasModel {
     private $conn;
+
+    public function __construct()
+    {
+        $this -> conn = new mysqli("localhost", "root", "", "shop");
+    }
 
     public function getAll() {
         $result = $this -> conn -> query("SELECT * FROM categorias");
@@ -17,7 +22,7 @@ class CategoriasModel {
     }
 
     public function update($data) {
-        $stmt = $this -> conn -> prepare("UPDATE categorias (nombre_categoria) WHERE id_categoria=?");
+        $stmt = $this -> conn -> prepare("UPDATE categorias SET nombre_categoria=? WHERE id_categoria=?");
         $stmt -> bind_param("si", $data['nombre_categoria'], $data['id_categoria']);
         //Parametrizar los datos s->string i->entero
         return $stmt -> execute();

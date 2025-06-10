@@ -1,28 +1,28 @@
 <?php
-require_once '../modelos/Productos_Model.php';
+require_once '../modelos/Categorias_Model.php';
  
 header('Content-Type: application/json');
-$producto = new ProductsModel();         //Se llama la funcion del modelo
-$method = $_SERVER['REQUEST_METHOD']; 
+$categoria = new CategoriasModel();         //Se llama la funcion del modelo
+$method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        echo json_encode($producto -> getAll());
+        echo json_encode($categoria -> getAll());
     break;
 
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
-        echo json_encode(['sucess' => $producto -> create($data)]);
+        echo json_encode(['sucess' => $categoria -> create($data)]);
     break;
 
     case 'PUT':
         $data = json_decode(file_get_contents("php://input"), true);
-        echo json_encode(['sucess' => $producto -> update($data)]);
+        echo json_encode(['sucess' => $categoria -> update($data)]);
     break;
 
     case 'DELETE':
         parse_str(file_get_contents("php://input"), $data);
-        echo json_encode(['sucess' => $producto -> delete($data)]);
+        echo json_encode(['sucess' => $categoria -> delete($data)]);
     break;
 
     default:
