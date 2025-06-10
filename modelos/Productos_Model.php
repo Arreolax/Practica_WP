@@ -7,7 +7,7 @@ class ProductsModel
 
     public function __construct()
     {
-        $this -> conn = new mysqli("localhost", "root", "", "shop");
+        $this -> conn = new mysqli("localhost", "root", "", "practica1");
     }
  
     public function getAll()
