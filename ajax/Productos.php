@@ -3,7 +3,7 @@ require_once '../modelos/Productos_Model.php';
  
 header('Content-Type: application/json');
 $producto = new ProductsModel();         //Se llama la funcion del modelo
-$method = $_SERVER['REQUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD']; 
 
 switch ($method) {
     case 'GET':
