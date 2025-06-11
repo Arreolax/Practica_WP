@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 $productoCategoria = new ProductoCategoriaModel();
 $method = $_SERVER['REQUEST_METHOD'];
-
+ 
 switch ($method) {
     case 'GET':
         echo json_encode($productoCategoria->getAll());
@@ -18,14 +18,7 @@ switch ($method) {
 
     case 'PUT':
         $data = json_decode(file_get_contents("php://input"), true);
-        if (
-            isset($data['id_producto'], $data['id_categoria'], $data['nuevo_id_producto'], $data['nuevo_id_categoria'])
-        ) {
-            $success = $productoCategoria->update($data);
-            echo json_encode(['success' => $success]);
-        } else {
-            echo json_encode(['success' => false, 'error' => 'Faltan parámetros']);
-        }
+        echo json_encode(['sucess' => $productoCategoria -> update($data)]);
         break;
 
     case 'DELETE':
